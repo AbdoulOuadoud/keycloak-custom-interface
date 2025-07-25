@@ -1,0 +1,129 @@
+/* Typold Font Family */
+
+/* Typold Book (Regular) */
+@font-face {
+  font-family: 'Typold';
+  src: url('./typold/The Northern Block Ltd - Typold Book.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Typold';
+  src: url('./typold/The Northern Block Ltd - Typold Book Italic.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Typold Book 500 (Medium) */
+@font-face {
+  font-family: 'Typold';
+  src: url('./typold/The Northern Block Ltd - Typold Book 500.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Typold Bold */
+@font-face {
+  font-family: 'Typold';
+  src: url('./typold/The Northern Block Ltd - Typold Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Typold';
+  src: url('./typold/The Northern Block Ltd - Typold Bold Italic.otf') format('opentype');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Typold Black */
+@font-face {
+  font-family: 'Typold';
+  src: url('./typold/The Northern Block Ltd - Typold Black.otf') format('opentype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Typold';
+  src: url('./typold/The Northern Block Ltd - Typold Black Italic.otf') format('opentype');
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Typold Condensed Book (Regular) */
+@font-face {
+  font-family: 'Typold Condensed';
+  src: url('./typold/The Northern Block Ltd - Typold Condensed Book.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Typold Condensed';
+  src: url('./typold/The Northern Block Ltd - Typold Condensed Book Italic.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Typold Condensed Bold */
+@font-face {
+  font-family: 'Typold Condensed';
+  src: url('./typold/The Northern Block Ltd - Typold Condensed Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Typold Condensed';
+  src: url('./typold/The Northern Block Ltd - Typold Condensed Bold Italic.otf') format('opentype');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Typold Condensed ExtraBold */
+@font-face {
+  font-family: 'Typold Condensed';
+  src: url('./typold/The Northern Block Ltd - Typold Condensed ExtraBold.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Typold Condensed';
+  src: url('./typold/The Northern Block Ltd - Typold Condensed ExtraBold Italic.otf') format('opentype');
+  font-weight: 800;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Typold Condensed Black */
+@font-face {
+  font-family: 'Typold Condensed';
+  src: url('./typold/The Northern Block Ltd - Typold Condensed Black.otf') format('opentype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Typold Condensed';
+  src: url('./typold/The Northern Block Ltd - Typold Condensed Black Italic.otf') format('opentype');
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}

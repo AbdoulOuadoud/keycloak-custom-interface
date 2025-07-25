@@ -1,0 +1,49 @@
+{
+    "auth": {
+        "login": {
+            "title": "Connexion à votre compte",
+            "subtitle": "Accédez à votre espace personnel en toute sécurité.",
+            "email": "Adresse e-mail",
+            "emailPlaceholder": "Entrez votre e-mail",
+            "password": "Mot de passe",
+            "passwordPlaceholder": "Entrez votre mot de passe",
+            "rememberMe": "Se souvenir de moi",
+            "forgotPassword": "Mot de passe oublié ?",
+            "loginButton": "Se connecter",
+            "noAccount": "Vous n'avez pas de compte ?",
+            "signupLink": "Créer un compte",
+            "or": "ou"
+        },
+        "signup": {
+            "title": "Créer un compte",
+            "subtitle": "Rejoignez-nous et profitez de tous nos services.",
+            "email": "Adresse e-mail",
+            "emailPlaceholder": "Entrez votre e-mail",
+            "phone": "Numéro de téléphone",
+            "phonePlaceholder": "Entrez votre numéro de téléphone",
+            "password": "Mot de passe",
+            "passwordPlaceholder": "Créez un mot de passe",
+            "confirmPassword": "Confirmez le mot de passe",
+            "confirmPasswordPlaceholder": "Répétez votre mot de passe",
+            "acceptTerms": "J'accepte les",
+            "termsOfService": "conditions d'utilisation",
+            "signupButton": "S'inscrire",
+            "hasAccount": "Vous avez déjà un compte ?",
+            "loginLink": "Se connecter",
+            "or": "ou"
+        },
+        "footer": {
+            "socialNetworks": "Réseaux sociaux",
+            "copyright": "© 2025 Izichange. Tous droits réservés."
+        },
+        "navbar": {
+            "login": "Connexion",
+            "signup": "Inscription",
+            "downloadApp": "Télécharger l'application",
+            "language": "Langue",
+            "theme": "Thème",
+            "darkMode": "Mode sombre",
+            "lightMode": "Mode clair"
+        }
+    }
+}

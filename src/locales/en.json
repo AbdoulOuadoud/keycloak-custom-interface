@@ -1,0 +1,49 @@
+{
+  "auth": {
+    "login": {
+      "title": "Sign in to your account",
+      "subtitle": "Access your personal space securely.",
+      "email": "Email address",
+      "emailPlaceholder": "Enter your email",
+      "password": "Password",
+      "passwordPlaceholder": "Enter your password",
+      "rememberMe": "Remember me",
+      "forgotPassword": "Forgot password?",
+      "loginButton": "Sign in",
+      "noAccount": "Don't have an account?",
+      "signupLink": "Create an account",
+      "or": "or"
+    },
+    "signup": {
+      "title": "Create an account",
+      "subtitle": "Join us and enjoy all our services.",
+      "email": "Email address",
+      "emailPlaceholder": "Enter your email",
+      "phone": "Phone number",
+      "phonePlaceholder": "Enter your phone number",
+      "password": "Password",
+      "passwordPlaceholder": "Create a password",
+      "confirmPassword": "Confirm password",
+      "confirmPasswordPlaceholder": "Repeat your password",
+      "acceptTerms": "I accept the",
+      "termsOfService": "terms of service",
+      "signupButton": "Sign up",
+      "hasAccount": "Already have an account?",
+      "loginLink": "Sign in",
+      "or": "or"
+    },
+    "footer": {
+      "socialNetworks": "Social networks",
+      "copyright": "© 2025 Izichange. All rights reserved."
+    },
+    "navbar": {
+      "login": "Login",
+      "signup": "Sign up",
+      "downloadApp": "Download the app",
+      "language": "Language",
+      "theme": "Theme",
+      "darkMode": "Dark mode",
+      "lightMode": "Light mode"
+    }
+  }
+}

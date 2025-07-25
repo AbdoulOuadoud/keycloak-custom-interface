@@ -1,0 +1,698 @@
+@import "tailwindcss";
+@import "https://izichangebucket.s3.eu-west-3.amazonaws.com/fonts/typold.css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: #FFFFFF;
+  --foreground: #1A1A1A;
+
+  /* Couleurs principales de la plateforme - Améliorées pour le mode clair */
+  --primary: #006B6B;
+  --primary-light: #E6F7F7;
+  --primary-dark: #004D4D;
+
+  --secondary: #1E40AF; /* Bleu plus foncé pour meilleur contraste */
+  --secondary-light: #EBF4FF;
+  --secondary-dark: #1E3A8A;
+
+  --accent: #DC2626; /* Rouge plus vif pour les actions importantes */
+  --accent-light: #FEF2F2;
+  --accent-dark: #991B1B;
+
+  /* Couleurs de texte et de fond - Améliorées */
+  --text-dark: #111827; /* Presque noir pour meilleur contraste */
+  --text-light: #FFFFFF;
+  --text-muted: #6B7280; /* Gris plus foncé pour la lisibilité */
+
+  /* Couleurs de statut - Plus contrastées */
+  --success: #059669; /* Vert plus foncé */
+  --success-light: #ECFDF5;
+  --warning: #D97706; /* Orange plus foncé */
+  --warning-light: #FFFBEB;
+  --error: #DC2626; /* Rouge plus foncé */
+  --error-light: #FEF2F2;
+
+  /* Couleurs de fond et bordures - Plus contrastées */
+  --bg-light: #F9FAFB; /* Gris très clair mais visible */
+  --bg-lighter: #F3F4F6; /* Gris clair pour les cards */
+  --border-color: #D1D5DB; /* Bordure plus visible */
+  --radius: 0.625rem;
+  
+  /* Variables typographiques */
+  --font-family-primary: 'Typold', system-ui, -apple-system, sans-serif;
+  --font-family-condensed: 'Typold Condensed', system-ui, -apple-system, sans-serif;
+
+  --card: #FFFFFF;
+  --card-foreground: #111827;
+  --popover: #FFFFFF;
+  --popover-foreground: #111827;
+  --primary-foreground: #FFFFFF;
+  --secondary-foreground: #FFFFFF;
+  --muted: #F3F4F6;
+  --muted-foreground: #6B7280;
+  --accent-foreground: #FFFFFF;
+  --destructive: #DC2626;
+  --border: #E5E7EB;
+  --input: #F9FAFB;
+  --ring: #3B82F6;
+  --chart-1: #EF4444;
+  --chart-2: #3B82F6;
+  --chart-3: #10B981;
+  --chart-4: #F59E0B;
+  --chart-5: #8B5CF6;
+  --sidebar: #FFFFFF;
+  --sidebar-foreground: #111827;
+  --sidebar-primary: #006B6B;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #F3F4F6;
+  --sidebar-accent-foreground: #111827;
+  --sidebar-border: #E5E7EB;
+  --sidebar-ring: #3B82F6;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-family-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Classes d'utilitaires pour les couleurs */
+.text-primary { color: var(--primary); }
+.text-secondary { color: var(--secondary); }
+.text-accent { color: var(--accent); }
+.text-dark { color: var(--text-dark); }
+.text-light { color: var(--text-light); }
+.text-muted { color: var(--text-muted); }
+.text-warning { color: var(--warning); }
+.text-error { color: var(--error); }
+
+.bg-primary { background-color: var(--primary); }
+.bg-primary-light { background-color: var(--primary-light); }
+.bg-secondary { background-color: var(--secondary); }
+.bg-secondary-light { background-color: var(--secondary-light); }
+.bg-accent { background-color: var(--accent); }
+.bg-accent-light { background-color: var(--accent-light); }
+.bg-warning { background-color: var(--warning); }
+.bg-warning-light { background-color: var(--warning-light); }
+.bg-error { background-color: var(--error); }
+.bg-error-light { background-color: var(--error-light); }
+.bg-light { background-color: var(--bg-light); }
+.bg-lighter { background-color: var(--bg-lighter); }
+
+/* Classes pour bordures */
+.border-primary { border-color: var(--primary); }
+.border-secondary { border-color: var(--secondary); }
+.border-accent { border-color: var(--accent); }
+.border-warning { border-color: var(--warning); }
+.border-error { border-color: var(--error); }
+.border-light { border-color: var(--border-color); }
+
+/* Classes hover pour les boutons */
+.hover\:bg-primary:hover { background-color: var(--primary); }
+.hover\:bg-secondary:hover { background-color: var(--secondary); }
+.hover\:bg-accent:hover { background-color: var(--accent); }
+.hover\:bg-warning:hover { background-color: var(--warning); }
+.hover\:bg-error:hover { background-color: var(--error); }
+.hover\:text-white:hover { color: white; }
+.hover\:text-primary:hover { color: var(--primary); }
+
+/* Transitions */
+.transition-colors {
+  transition-property: color, background-color, border-color;
+  transition-duration: 200ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+.dark {
+  --background: #292b44;
+  --foreground: oklch(0.985 0 0);
+  
+  /* Couleurs principales adaptées au dark mode */
+  --primary: #008080;
+  --primary-light: rgba(0, 163, 163, 0.1);
+  --primary-dark: #007A7A;
+
+  --secondary: #5A72D4;
+  --secondary-light: rgba(90, 114, 212, 0.1);
+  --secondary-dark: #4A5FB8;
+
+  --accent: #FF4757;
+  --accent-light: rgba(255, 71, 87, 0.1);
+  --accent-dark: #E63946;
+
+  /* Couleurs de texte adaptées */
+  --text-dark: #F7FAFC;
+  --text-light: #171717;
+  --text-muted: #A0AEC0;
+
+  /* Couleurs de statut pour le dark mode */
+  --success: #48BB78;
+  --success-light: rgba(72, 187, 120, 0.1);
+  --warning: #F6D55C;
+  --warning-light: rgba(246, 213, 92, 0.1);
+  --error: #FC8181;
+  --error-light: rgba(252, 129, 129, 0.1);
+
+  /* Couleurs de fond et bordures pour le dark mode */
+  --bg-light: #3A3D5C;
+  --bg-lighter: #454869;
+  --border-color: #4A5568;
+
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+/* Classe pour activer le dark mode */
+.dark-mode {
+  color-scheme: dark;
+}
+
+/* Amélioration des styles pour le PhoneInput */
+.PhoneInput {
+  width: 100%;
+  padding: 0.625rem 0.75rem; /* py-2.5 px-3 */
+  border: 1px solid #D1D5DB; /* border-gray-300 */
+  border-radius: 0.5rem; /* rounded-lg */
+  background-color: white;
+  font-size: 0.875rem; /* text-sm */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+@media (min-width: 640px) {
+  .PhoneInput {
+    padding: 0.75rem 1rem; /* sm:py-3 sm:px-4 */
+    font-size: 1rem; /* sm:text-base */
+  }
+}
+
+.PhoneInput:focus-within {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px var(--primary-light);
+}
+
+.PhoneInputInput {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  width: 100%;
+  color: #374151; /* text-gray-700 */
+}
+
+.PhoneInputCountrySelect {
+  background-color: white;
+  border: none;
+  border-right: 1px solid #D1D5DB;
+  color: #374151;
+  outline: none;
+  padding-right: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+/* Amélioration des styles pour le PhoneInput en dark mode */
+.dark .PhoneInput {
+  background-color: var(--bg-lighter);
+  border-color: var(--border-color);
+}
+
+.dark .PhoneInput:focus-within {
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 2px var(--primary-light) !important;
+}
+
+.dark .PhoneInputInput {
+  background-color: transparent !important;
+  color: var(--text-dark) !important;
+}
+
+.dark .PhoneInputCountrySelect {
+  background-color: var(--bg-lighter) !important;
+  border-right-color: var(--border-color) !important;
+  color: var(--text-dark) !important;
+}
+
+.dark .PhoneInput:focus-within .PhoneInputCountrySelect {
+  border-right-color: var(--border-color) !important;
+}
+
+/* Classes utilitaires pour le dark mode */
+.dark .bg-white {
+  background-color: var(--bg-light) !important;
+}
+
+.dark .bg-gray-50 {
+  background-color: var(--bg-lighter) !important;
+}
+
+.dark .text-gray-900 {
+  color: var(--text-dark) !important;
+}
+
+.dark .text-gray-600 {
+  color: var(--text-muted) !important;
+}
+
+.dark .border-gray-200 {
+  border-color: var(--border-color) !important;
+}
+
+.dark .border-gray-300 {
+  border-color: var(--border-color) !important;
+}
+
+/* Transitions pour un changement de mode fluide */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Media query pour détecter la préférence système */
+@media (prefers-color-scheme: dark) {
+  :root:not(.light) {
+    --background: #292b44;
+    --foreground: oklch(0.985 0 0);
+    --primary: #008080;
+    --primary-light: rgba(0, 163, 163, 0.1);
+    --secondary: #5A72D4;
+    --secondary-light: rgba(90, 114, 212, 0.1);
+    --accent: #FF4757;
+    --accent-light: rgba(255, 71, 87, 0.1);
+    --text-dark: #F7FAFC;
+    --text-muted: #A0AEC0;
+    --bg-light: #3A3D5C;
+    --bg-lighter: #454869;
+    --border-color: #4A5568;
+  }
+}
+
+/* Amélioration de la visibilité des placeholders */
+input::placeholder,
+textarea::placeholder {
+  color: #9CA3AF; /* gray-400 - Plus visible en mode clair */
+  opacity: 1;
+}
+
+input:focus::placeholder,
+textarea:focus::placeholder {
+  color: #D1D5DB; /* gray-300 - Plus subtil quand focused */
+}
+
+/* Placeholders en mode sombre */
+.dark input::placeholder,
+.dark textarea::placeholder {
+  color: #6B7280; /* gray-500 - Adapté au mode sombre */
+  opacity: 1;
+}
+
+.dark input:focus::placeholder,
+.dark textarea:focus::placeholder {
+  color: #4B5563; /* gray-600 - Plus subtil en mode sombre quand focused */
+}
+
+/* Styles spécifiques pour PhoneInput placeholders */
+.PhoneInputInput::placeholder {
+  color: #9CA3AF !important; /* gray-400 */
+  opacity: 1 !important;
+}
+
+.dark .PhoneInputInput::placeholder {
+  color: #6B7280 !important; /* gray-500 pour le mode sombre */
+  opacity: 1 !important;
+}
+
+/* Amélioration du contraste pour les cartes en mode clair */
+.bg-white {
+  background-color: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+/* Amélioration des bordures en mode clair */
+.border-gray-200 {
+  border-color: #E5E7EB !important;
+}
+
+.border-gray-300 {
+  border-color: #D1D5DB !important;
+}
+
+/* Textes plus contrastés en mode clair */
+.text-gray-900 {
+  color: #111827 !important;
+}
+
+.text-gray-600 {
+  color: #4B5563 !important;
+}
+
+.text-gray-500 {
+  color: #6B7280 !important;
+}
+
+.text-gray-400 {
+  color: #9CA3AF !important;
+}
+
+/* Fonds plus contrastés */
+.bg-gray-50 {
+  background-color: #F9FAFB !important;
+}
+
+.bg-gray-100 {
+  background-color: #F3F4F6 !important;
+}
+
+/* Amélioration des boutons */
+.bg-primary-500 {
+  background-color: var(--primary) !important;
+}
+
+.hover\:bg-primary-600:hover {
+  background-color: var(--primary-dark) !important;
+}
+
+.bg-success-500 {
+  background-color: var(--success) !important;
+}
+
+.hover\:bg-success-600:hover {
+  background-color: #047857 !important;
+}
+
+.bg-error-500 {
+  background-color: var(--error) !important;
+}
+
+.hover\:bg-error-600:hover {
+  background-color: #B91C1C !important;
+}
+
+/* Amélioration des couleurs de texte pour les boutons */
+.text-primary-600 {
+  color: var(--primary) !important;
+}
+
+.text-success-600 {
+  color: var(--success) !important;
+}
+
+.text-error-600 {
+  color: var(--error) !important;
+}
+
+/* Amélioration des fonds colorés */
+.bg-primary-50 {
+  background-color: var(--primary-light) !important;
+}
+
+.bg-success-50 {
+  background-color: var(--success-light) !important;
+}
+
+.bg-error-50 {
+  background-color: var(--error-light) !important;
+}
+
+.bg-warning-50 {
+  background-color: var(--warning-light) !important;
+}
+
+/* Amélioration des bordures colorées */
+.border-primary-200 {
+  border-color: #A7D8D8 !important;
+}
+
+.border-success-200 {
+  border-color: #A7F3D0 !important;
+}
+
+.border-error-200 {
+  border-color: #FECACA !important;
+}
+
+.border-warning-200 {
+  border-color: #FED7AA !important;
+}
+
+/* ===== STYLES SPÉCIFIQUES VIRTUAL CARD ===== */
+
+/* Amélioration des dégradés de cartes en mode clair */
+.from-success-400 {
+  --tw-gradient-from: #34D399 var(--tw-gradient-from-position);
+}
+
+.to-success-600 {
+  --tw-gradient-to: #059669 var(--tw-gradient-to-position);
+}
+
+.from-primary-400 {
+  --tw-gradient-from: #14B8A6 var(--tw-gradient-from-position);
+}
+
+.to-primary-600 {
+  --tw-gradient-to: #0D9488 var(--tw-gradient-to-position);
+}
+
+/* Couleurs des textes sur les cartes */
+.text-success-100 {
+  color: #DCFCE7 !important;
+}
+
+.text-primary-100 {
+  color: #CCFBF1 !important;
+}
+
+/* Amélioration des couleurs de fond pour les notifications */
+.bg-success-900\/20 {
+  background-color: rgba(22, 101, 52, 0.2) !important;
+}
+
+.bg-error-900\/20 {
+  background-color: rgba(127, 29, 29, 0.2) !important;
+}
+
+.bg-primary-900\/20 {
+  background-color: rgba(19, 78, 74, 0.2) !important;
+}
+
+/* Bordures pour les notifications */
+.border-success-800\/30 {
+  border-color: rgba(22, 101, 52, 0.3) !important;
+}
+
+.border-error-800\/30 {
+  border-color: rgba(127, 29, 29, 0.3) !important;
+}
+
+.border-primary-800\/30 {
+  border-color: rgba(19, 78, 74, 0.3) !important;
+}
+
+/* Couleurs de texte pour les notifications */
+.text-success-400 {
+  color: #4ADE80 !important;
+}
+
+.text-error-400 {
+  color: #F87171 !important;
+}
+
+.text-primary-400 {
+  color: #2DD4BF !important;
+}
+
+.text-primary-300 {
+  color: #5EEAD4 !important;
+}
+
+/* Amélioration du contraste pour les Virtual Card components */
+.virtual-card-container {
+  background-color: #F9FAFB;
+}
+
+.virtual-card-section {
+  background-color: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* Mode sombre pour Virtual Card */
+.dark .virtual-card-container {
+  background-color: var(--bg-light);
+}
+
+.dark .virtual-card-section {
+  background-color: var(--bg-lighter);
+  border-color: var(--border-color);
+}
+
+/* Amélioration des inputs en mode clair */
+/* input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="password"],
+select,
+textarea {
+  background-color: #FFFFFF;
+  border: 1px solid #D1D5DB;
+  color: #111827;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(6, 107, 107, 0.1);
+} */
+
+/* Toast notifications avec meilleur contraste */
+.toast-success {
+  background-color: #FFFFFF;
+  border: 1px solid #059669;
+  color: #111827;
+}
+
+.toast-error {
+  background-color: #FFFFFF;
+  border: 1px solid #DC2626;
+  color: #111827;
+}
+
+.toast-warning {
+  background-color: #FFFFFF;
+  border: 1px solid #D97706;
+  color: #111827;
+}
+
+.toast-info {
+  background-color: #FFFFFF;
+  border: 1px solid #1E40AF;
+  color: #111827;
+}
+
+/* Amélioration des ombres pour le mode clair */
+.shadow-sm {
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
+}
+
+.shadow {
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06) !important;
+}
+
+.shadow-lg {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Responsive text sizing pour Virtual Card */
+@media (max-width: 768px) {
+  .virtual-card-title {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+  
+  .virtual-card-subtitle {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .virtual-card-title {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+  
+  .virtual-card-subtitle {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+}
