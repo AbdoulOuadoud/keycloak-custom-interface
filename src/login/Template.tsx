@@ -1,5 +1,5 @@
 import { CustomTemplateProps } from './types'
-const Template = (props: CustomTemplateProps<"login.ftl">) => {
+const Template = <T extends string>(props: CustomTemplateProps<T>) => {
   const { children } = props
 
   return (
