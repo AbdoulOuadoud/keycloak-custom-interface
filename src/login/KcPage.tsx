@@ -4,6 +4,7 @@ import type { KcContext } from "./KcContext";
 import { useI18n } from "./i18n";
 import DefaultPage from "keycloakify/login/DefaultPage";
 import { Login } from "./pages/login/Index";
+import { LoginOtp } from "./pages/login-otp/Index";
 import { Template } from "./Template";
 import { createTheme, ThemeProvider } from "@mui/material";
 import "./styles/theme.scss";
@@ -45,9 +46,13 @@ export default function KcPage(props: { kcContext: KcContext }) {
               return (
                 <Login Template={Template} i18n={i18n} kcContext={kcContext} />
               );
-              case "register.ftl":
-              return ( 
-                <Register Template={Template} i18n={i18n} kcContext={kcContext} /> 
+            case "login-otp.ftl":
+              return (
+                <LoginOtp Template={Template} i18n={i18n} kcContext={kcContext} />
+              );
+            case "register.ftl":
+              return (
+                <Register Template={Template} i18n={i18n} kcContext={kcContext} />
               );
             default:
               return (
