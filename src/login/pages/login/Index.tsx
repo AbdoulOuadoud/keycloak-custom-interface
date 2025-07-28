@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useTranslation } from "react-i18next";
 import { clsx } from "keycloakify/tools/clsx";
 import { PageProps } from "../../types";
 import AuthSlider from "../../../components/AuthSlider.tsx";
@@ -22,7 +21,6 @@ const Login = (props: PageProps<"login.ftl">) => {
   } = kcContext;
 
   const { msg, msgStr } = i18n;
-  const { t } = useTranslation();
 
   const [isLoginButtonDisabled, setIsLoginButtonDisabled] = useState(false);
 
@@ -39,7 +37,7 @@ const Login = (props: PageProps<"login.ftl">) => {
             {/* Section gauche - Texte et illustration */}
             <div className="text-center lg:text-left group order-1 lg:order-0">
               <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-[var(--text-dark)] mb-4 sm:mb-6 transition-colors">
-                {t('auth.login.title')}
+                {msg("auth.login.title")}
               </h1>
               <div className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-[var(--text-muted)] mb-6 sm:mb-8 transition-colors font-medium">
                 Bienvenue sur votre espace sécurisé. Connectez-vous pour accéder à tous vos services personnalisés.
