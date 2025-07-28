@@ -8,7 +8,7 @@ const BASE_IMAGE_URL = "https://izichangebucket.s3.eu-west-3.amazonaws.com";
 const Register = (props: PageProps<"register.ftl">) => {
     const { kcContext, Template, i18n } = props;
     const { url, message, isAppInitiatedAction, messagesPerField, profile, termsAcceptanceRequired } = kcContext;
-    const { msg, msgStr } = i18n;
+    const { msg } = i18n;
     const emailDefault = profile?.attributesByName?.email?.value ?? "";
     const phoneDefault = profile?.attributesByName?.phone?.value ?? "";
     const [phone, setPhone] = useState(phoneDefault);
@@ -64,8 +64,25 @@ const Register = (props: PageProps<"register.ftl">) => {
                                             "dark:bg-[var(--bg-lighter)] dark:text-[var(--text-dark)] rounded-lg focus:ring-2 focus:ring-[var(--primary)] focus:border-[var(--primary)] outline-none transition-colors"
                                         )}
                                         defaultValue={emailDefault}
-                                        placeholder={msgStr('email')}
+                                        placeholder="Email"
+                                        autoComplete="email"
                                         required
+                                    />
+                                    {/* Champ username caché qui copie la valeur de l'email */}
+                                    <input
+                                        type="hidden"
+                                        name="username"
+                                        defaultValue={emailDefault}
+                                        ref={(input) => {
+                                            if (input) {
+                                                const emailInput = input.form?.querySelector('input[name="email"]') as HTMLInputElement;
+                                                if (emailInput) {
+                                                    emailInput.addEventListener('input', (e) => {
+                                                        input.value = (e.target as HTMLInputElement).value;
+                                                    });
+                                                }
+                                            }
+                                        }}
                                     />
                                     {messagesPerField?.existsError?.('email') && (
                                         <div className="text-xs text-red-600 mt-1">{messagesPerField.getFirstError('email')}</div>
@@ -74,7 +91,7 @@ const Register = (props: PageProps<"register.ftl">) => {
                                 {/* Téléphone (champ custom, à gérer côté backend si besoin) */}
                                 <div>
                                     <label htmlFor="phone" className="block text-sm font-medium text-gray-700 dark:text-[var(--text-dark)] mb-2 transition-colors">
-                                        Téléphone
+                                        {msg('phone')}
                                     </label>
                                     <input
                                         type="tel"
@@ -108,7 +125,7 @@ const Register = (props: PageProps<"register.ftl">) => {
                                             "dark:bg-[var(--bg-lighter)] dark:text-[var(--text-dark)] rounded-lg focus:ring-2 focus:ring-[var(--primary)] focus:border-[var(--primary)] outline-none transition-colors"
                                         )}
                                         autoComplete="new-password"
-                                        placeholder={msgStr('password')}
+                                        placeholder="Mot de passe"
                                         required
                                     />
                                     {messagesPerField?.existsError?.('password') && (
@@ -130,7 +147,7 @@ const Register = (props: PageProps<"register.ftl">) => {
                                             "dark:bg-[var(--bg-lighter)] dark:text-[var(--text-dark)] rounded-lg focus:ring-2 focus:ring-[var(--primary)] focus:border-[var(--primary)] outline-none transition-colors"
                                         )}
                                         autoComplete="new-password"
-                                        placeholder={msgStr('passwordConfirm')}
+                                        placeholder="Confirmer le mot de passe"
                                         required
                                     />
                                     {messagesPerField?.existsError?.('password-confirm') && (
@@ -148,7 +165,7 @@ const Register = (props: PageProps<"register.ftl">) => {
                                             required
                                         />
                                         <label htmlFor="termsAccepted" className="text-sm text-gray-600 dark:text-[var(--text-muted)] leading-relaxed transition-colors">
-                                            <span dangerouslySetInnerHTML={{ __html: msg('termsText', 'J’accepte les conditions d’utilisation') }} />
+                                            {msg('termsText')}
                                         </label>
                                     </div>
                                 )}
