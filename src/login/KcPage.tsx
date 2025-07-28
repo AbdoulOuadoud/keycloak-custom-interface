@@ -8,6 +8,7 @@ import { Template } from "./Template";
 import { createTheme, ThemeProvider } from "@mui/material";
 import "./styles/theme.scss";
 import Register from "./pages/register/Index";
+import ForgotPassword from "./pages/forgotPassword/Index";
 const UserProfileFormFields = lazy(
   () => import("keycloakify/login/UserProfileFormFields")
 );
@@ -45,9 +46,13 @@ export default function KcPage(props: { kcContext: KcContext }) {
               return (
                 <Login Template={Template} i18n={i18n} kcContext={kcContext} />
               );
-              case "register.ftl":
+            case "register.ftl":
               return ( 
                 <Register Template={Template} i18n={i18n} kcContext={kcContext} /> 
+              );
+            case "login-reset-password.ftl":
+              return (
+                <ForgotPassword Template={Template} i18n={i18n} kcContext={kcContext} />
               );
             default:
               return (

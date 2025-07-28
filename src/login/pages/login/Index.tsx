@@ -52,7 +52,7 @@ const Login = (props: PageProps<"login.ftl">) => {
             {/* Section droite - Formulaire */}
             <div className="dark:bg-[var(--bg-light)] p-4 sm:p-6 lg:p-0 rounded-lg sm:rounded-xl lg:rounded-none transition-colors order-1">
               {/* Logo au-dessus du formulaire */}
-              <div className="flex justify-start pt-8 pb-4 mb-6">
+              <div className="flex justify-start pt-8 pb-4">
                 <img src={`${BASE_IMAGE_URL}/logos-izichange/logo.png`} alt="Logo" className="h-14 w-auto" />
               </div>
               <form
