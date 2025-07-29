@@ -2,6 +2,7 @@ import { useState } from "react";
 import { clsx } from "keycloakify/tools/clsx";
 import { PageProps } from "../../types";
 import AuthSlider from "../../../components/AuthSlider.tsx";
+import { logKeycloakContext } from "../../utils/keycloak-utils";
 
 const BASE_IMAGE_URL = "https://izichangebucket.s3.eu-west-3.amazonaws.com";
 
@@ -23,6 +24,9 @@ const Login = (props: PageProps<"login.ftl">) => {
   const { msg, msgStr } = i18n;
 
   const [isLoginButtonDisabled, setIsLoginButtonDisabled] = useState(false);
+
+  // Debug du contexte Keycloak
+  logKeycloakContext(kcContext);
 
   const handleSubmit = () => {
     setIsLoginButtonDisabled(true);
@@ -55,7 +59,25 @@ const Login = (props: PageProps<"login.ftl">) => {
               </div>
               <form
                 id="kc-form-login"
-                onSubmit={e => { e.preventDefault(); handleSubmit(); (e.target as HTMLFormElement).submit(); }}
+                onSubmit={e => { 
+                  e.preventDefault(); 
+                  handleSubmit(); 
+                  // S'assurer que tous les champs nécessaires sont présents avant soumission
+                  const form = e.target as HTMLFormElement;
+                  
+                  // Vérifier et ajouter les champs cachés manquants
+                  if (!form.querySelector('input[name="credentialId"]')) {
+                    const credentialInput = document.createElement('input');
+                    credentialInput.type = 'hidden';
+                    credentialInput.name = 'credentialId';
+                    credentialInput.value = auth?.selectedCredential ?? '';
+                    form.appendChild(credentialInput);
+                  }
+                  
+                  setTimeout(() => {
+                    form.submit();
+                  }, 100);
+                }}
                 action={url.loginAction}
                 method="post"
                 className="space-y-4 sm:space-y-6"

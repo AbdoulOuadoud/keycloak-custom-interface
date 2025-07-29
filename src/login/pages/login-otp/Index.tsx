@@ -59,7 +59,22 @@ const LoginOtp = (props: PageProps<"login-otp.ftl">) => {
                 onSubmit={e => {
                   e.preventDefault();
                   handleSubmit();
-                  (e.target as HTMLFormElement).submit();
+                  
+                  // S'assurer que tous les champs nécessaires sont présents
+                  const form = e.target as HTMLFormElement;
+                  
+                  // Vérifier et ajouter le selectedCredentialId si nécessaire
+                  if (selectedCredentialId && !form.querySelector('input[name="selectedCredentialId"]')) {
+                    const credentialInput = document.createElement('input');
+                    credentialInput.type = 'hidden';
+                    credentialInput.name = 'selectedCredentialId';
+                    credentialInput.value = selectedCredentialId;
+                    form.appendChild(credentialInput);
+                  }
+                  
+                  setTimeout(() => {
+                    form.submit();
+                  }, 100);
                 }}
                 action={url.loginAction}
                 method="post"

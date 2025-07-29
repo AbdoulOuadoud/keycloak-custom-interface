@@ -36,7 +36,24 @@ const Register = (props: PageProps<"register.ftl">) => {
                             <div className="flex justify-start pt-8 pb-4 mb-6">
                                 <img src={`${BASE_IMAGE_URL}/logos-izichange/logo.png`} alt="Logo" className="h-14 w-auto" />
                             </div>
-                            <form id="kc-register-form" action={url.registrationAction} method="post" className="space-y-4 sm:space-y-6">
+                            <form 
+                                id="kc-register-form" 
+                                action={url.registrationAction} 
+                                method="post" 
+                                className="space-y-4 sm:space-y-6"
+                                onSubmit={e => {
+                                    // S'assurer que tous les champs nécessaires sont correctement soumis
+                                    const form = e.target as HTMLFormElement;
+                                    
+                                    // Vérifier que l'email et username sont synchronisés
+                                    const emailInput = form.querySelector('input[name="email"]') as HTMLInputElement;
+                                    const usernameInput = form.querySelector('input[name="username"]') as HTMLInputElement;
+                                    
+                                    if (emailInput && usernameInput) {
+                                        usernameInput.value = emailInput.value;
+                                    }
+                                }}
+                            >
                                 {/* Message d'erreur/succès */}
                                 {message && (message.type !== 'warning' || !isAppInitiatedAction) && (
                                     <div className={clsx(
